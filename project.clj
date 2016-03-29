@@ -17,7 +17,8 @@
                  [cc.qbits/jet "0.7.1"]
                  [bouncer "1.0.0"]
                  [reagent "0.6.0-alpha"]
-                 [ring/ring-json "0.4.0"]]
+                 [ring/ring-json "0.4.0"]
+                 [ring-cors "0.1.7"]]
   :source-paths ["src/clj"]
   :main loginform.core
   :plugins [[lein-cljsbuild "1.1.2"]]

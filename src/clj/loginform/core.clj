@@ -10,7 +10,7 @@
             [ring.middleware.json :as ring-json]
             [compojure.route :as route]
             [ring.util.response	:as rr]
-           ))
+            [ring.middleware.cors :refer [wrap-cors]]))
 
 ;; Simple function that works as controller
 ;; It should return a proper response. In our
@@ -74,6 +74,8 @@
 (def app
   (-> app-routes
       (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
+      (wrap-cors :access-control-allow-origin [#".*"]
+                 :access-control-allow-methods [:get :put :post :delete])
       (ring-json/wrap-json-body {:keywords? true})
       (ring-json/wrap-json-response)))
 

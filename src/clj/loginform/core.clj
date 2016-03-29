@@ -41,8 +41,7 @@
   (GET "/" [] home)
 
   (POST "/authenticate" {body :body}
-        (let [usr (find-in in-db (:email-id body))]
-          (println (:email-id body))
+        (let [usr (find-in in-db (:identifier body))]
           (rr/content-type
            (cond (or (nil? usr)
                      (not= (:password usr)(:password body))) (rr/status {:message "invalid credentials"} 401)

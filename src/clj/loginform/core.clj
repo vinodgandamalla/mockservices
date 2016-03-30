@@ -23,16 +23,14 @@
                           {:user "user3" :password "ti" :email-id "user3@gmail.com"}
                           {:user "user4" :password "tid" :email-id "user4@gmail.com"}]}))
 
+(def users-to-register (atom {:email "rajesh.ponnala@gmail.com"}))
 
-
-
+(def registered-users (atom {:email "inturi.krishnarao@gmail.com"}))
 
 (defn find-in [in-db email-id]
   (first
    (filter (fn[user](= (:email-id user) email-id))
            (:users @in-db))))
-
-
 (defn home
   [req]
   (render (io/resource "index.html") req))
@@ -40,6 +38,13 @@
 ;; Routes definition
 (defroutes app-routes
   (GET "/" [] home)
+
+  (POST "/signup" {body :body}
+        (rr/content-type
+         (cond (= (:email @registered-users) (:email body)) (rr/status {:message "already existing"} 409)
+               (not= (:email @users-to-register) (:email body)) (rr/status {:message "invalid user"} 404)
+               :else (rr/response {:message "sucessfull"})) "application/json"))
+
 
   (POST "/authenticate" {body :body}
         (let [usr (find-in in-db (:identifier body))]
@@ -61,14 +66,13 @@
                                                          m)) (:users @in-db))))
                          (rr/response {:message "changed successfully"})))
            "application/json")))
-  
 
   (POST "/forgotpassword" {body :body}
         (let [usr (find-in in-db (:email body))]
           (rr/content-type
            (cond (nil? usr) (rr/status {:body {:message "invalid user"}} 401) 
                  :else (rr/response {:message "check  your mail for reset link"})) "application/json")))
-  
+
   (route/resources "/static")
   (route/not-found "<h1>Page not found</h1>"))
 

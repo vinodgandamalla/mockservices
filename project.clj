@@ -14,7 +14,7 @@
                  [ring/ring-core "1.4.0" :exclusions [javax.servlet/servlet-api]]
                  [ring/ring-servlet "1.4.0" :exclusions [javax.servlet/servlet-api]]
                  [ring/ring-defaults "0.1.5" :exclusions [javax.servlet/servlet-api]]
-                 [cc.qbits/jet "0.7.1"]
+                 [ring/ring-jetty-adapter "1.4.0"]
                  [bouncer "1.0.0"]
                  [reagent "0.6.0-alpha"]
                  [ring/ring-json "0.4.0"]

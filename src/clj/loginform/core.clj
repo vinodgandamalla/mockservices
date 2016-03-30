@@ -50,17 +50,17 @@
                  :else (rr/response (dissoc usr :password))) "application/json")))
 
   (POST "/changepassword" {body :body}
-
-        (let [usr (find-in in-db "user3@gmail.com")]
+        (let [usr (find-in in-db (:email body))]
           (rr/content-type
            (cond (not= (:password usr)(:password body)) (rr/status {:body {:message "current password does not match"}} 401)
                  (not=(:newpassword body)(:confirmnewpassword body))(rr/status {:body {:message "new password and confirmnewpassword does not match"}} 401)
                  :else ( do
                          (reset! in-db (assoc @in-db :users
                                               (map (fn [m]
-                                                     (if (=(:email-id m) "user3@gmail.com")(assoc m :password (:newpassword body))
+                                                     (if (=(:email-id m) (:email body))(assoc m :password (:newpassword body))
                                                          m)) (:users @in-db))))
-                         (rr/response {:message "changed successfully"})))"application/json")))
+                         (rr/response {:message "changed successfully"})))
+           "application/json")))
   
 
   (POST "/forgotpassword" {body :body}

@@ -17,7 +17,11 @@ FIXME: explanation
 FIXME: listing of options this app accepts.
 
 ## Examples
-
+ use this users to verify login,forgot password,changepassword -> username: "user1@gmail.com",password: "techno"
+ use this emails to verify sign-up ->
+      allowed user -> "rajesh.ponnala@gmail.com"
+      existing user -> "inturi.krishnarao@gmail.com"
+ 
 ...
 
 ### Bugs

@@ -1,6 +1,6 @@
 (ns loginform.core
   (:require
-   ;[qbits.jet.server :refer [run-jetty]]
+                                        ;[qbits.jet.server :refer [run-jetty]]
    [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
    [compojure.core :refer :all]
    [compojure.route :as route]
@@ -12,7 +12,8 @@
    [compojure.route :as route]
    [ring.util.response	:as rr]
    [ring.middleware.cors :refer [wrap-cors]]
-   [ring.adapter.jetty :as jetty]))
+   [ring.adapter.jetty :as jetty]
+   [clojure.string :as s]))
 
 ;; Simple function that works as controller
 ;; It should return a proper response. In our
@@ -26,6 +27,21 @@
 (def users-to-register (atom {:email "rajesh.ponnala@gmail.com"}))
 
 (def registered-users (atom {:email "inturi.krishnarao@gmail.com"}))
+
+
+(def myconnections (atom [{:name "Krishna Rao" :types "Individual" :profile-complete "25%"}
+                          {:name "Shiva" :types "Individual" :profile-complete "85%"}
+                          {:name "Bharath" :types "Individual" :profile-complete "5%"}
+                          {:name "suresh" :types "Individual" :profile-complete "20%"}
+                          ]))
+(def myconnectionsempty (atom []))
+
+
+
+(def myconnectionspending (atom [{:name "Rajesh" :types "Individual" :profile-complete "75%"}
+                                 {:name "Srinu" :types "Individual" :profile-complete "75%"}
+                                 {:name "Nivas" :types "Organizational" :profile-complete "45%"}]))
+
 
 (defn find-in [in-db email-id]
   (first
@@ -72,6 +88,21 @@
           (rr/content-type
            (cond (nil? usr) (rr/status {:body {:message "invalid user"}} 401) 
                  :else (rr/response {:message "check  your mail for reset link"})) "application/json")))
+
+  (GET "/salesagent/connections" []
+       (rr/content-type
+        (rr/response @myconnections)
+        "application/json"))
+
+  (GET "/salesagent/connections/search/:name" [name]
+       (rr/content-type
+        (rr/response (filter #(.contains (:name %) name) @myconnections))
+        "application/json"))
+
+  (GET "/salesagent/connections/pending" []
+       (rr/content-type
+        (rr/response @myconnectionspending)
+        "application/json"))
 
   (route/resources "/static")
   (route/not-found "<h1>Page not found</h1>"))

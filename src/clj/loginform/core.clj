@@ -19,7 +19,8 @@
 ;; It should return a proper response. In our
 ;; case it returns a content of static index.html.
 
-(def in-db (atom {:users [{:user "user1" :password "techno" :email-id "user1@gmail.com"}
+(def in-db (atom {:users [{:user "user1" :password "techno" :email-id "user1@gmail.com"
+                           :services ["SuperAgent"]}
                           {:user "user2" :password "identity" :email-id "user2@gmail.com"}
                           {:user "user3" :password "ti" :email-id "user3@gmail.com"}
                           {:user "user4" :password "tid" :email-id "user4@gmail.com"}]}))
@@ -41,6 +42,44 @@
 (def myconnectionspending (atom [{:name "Rajesh" :types "Individual" :profile-complete "75%"}
                                  {:name "Srinu" :types "Individual" :profile-complete "75%"}
                                  {:name "Nivas" :types "Organizational" :profile-complete "45%"}]))
+
+(def videolist (atom
+                [{ :id 1 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 1"
+                  :videoUrl "https://www.youtube.com/embed/VSdnJDO-xdg" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png" :videoCategory "generic"}
+                 { :id 2 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 2"
+                 :videoUrl "https://www.youtube.com/embed/uW7pZLyYjDE" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png" :videoCategory "generic"}
+                 { :id 3 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 3"
+                  :videoUrl "https://www.youtube.com/embed/wASCH_gPnDw" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "generic"}
+                 { :id 4 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 4"
+                  :videoUrl "https://www.youtube.com/embed/VVd4ow-ZcX0" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "generic"}
+                 { :id 5 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 5"
+                  :videoUrl "https://www.youtube.com/embed/FjUKmTIHyXo" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "generic"}
+                 { :id 6 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 6"
+                  :videoUrl "https://www.youtube.com/embed/VSdnJDO-xdg" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "generic"}
+                 { :id 7 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 7"
+                  :videoUrl "https://www.youtube.com/embed/l_fxk3QvOrQ" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "generic"}
+                 { :id 8 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 8"
+                  :videoUrl "https://www.youtube.com/embed/VSdnJDO-xdg" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "generic"}
+                 { :id 9 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 9"
+                  :videoUrl "https://www.youtube.com/embed/l_fxk3QvOrQ" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 10 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 10"
+                  :videoUrl "https://www.youtube.com/embed/VSdnJDO-xdg" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 11 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 11"
+                  :videoUrl "https://www.youtube.com/embed/uW7pZLyYjDE" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 12 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 12"
+                  :videoUrl "https://www.youtube.com/embed/wASCH_gPnDw" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 13 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 13"
+                  :videoUrl "https://www.youtube.com/embed/VVd4ow-ZcX0" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 14 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 14"
+                  :videoUrl "https://www.youtube.com/embed/FjUKmTIHyXo" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 15 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 15"
+                  :videoUrl "https://www.youtube.com/embed/l_fxk3QvOrQ" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 16 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 16"
+                  :videoUrl "https://www.youtube.com/embed/VSdnJDO-xdg" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 17 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 17"
+                  :videoUrl "https://www.youtube.com/embed/l_fxk3QvOrQ" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}
+                 { :id 18 :description "How Know the Basics of Bussiness circle" :videoName "Tutorial 18"
+                  :videoUrl "https://www.youtube.com/embed/VSdnJDO-xdg" :videoPic "http://easyhtml5video.com/assets/images/icons/features-any-videos.png"  :videoCategory "specialized"}]))
 
 
 (defn find-in [in-db email-id]
@@ -68,7 +107,8 @@
            (cond (or (nil? usr)
                      (not= (:password usr)(:password body)))
                  (rr/status {:message "invalid credentials"} 401)
-                 :else (rr/response (dissoc usr :password))) "application/json")))
+                 :else (rr/response (assoc (dissoc usr :password)
+                                           :token "gfjhjgjgh"))) "application/json")))
 
   (POST "/changepassword" {body :body}
         (let [usr (find-in in-db (:email body))]
@@ -103,6 +143,11 @@
        (rr/content-type
         (rr/response @myconnectionspending)
         "application/json"))
+
+  (GET "/salesagent/trainings" []
+    (rr/content-type
+     (rr/response @videolist)
+     "application/json"))
 
   (route/resources "/static")
   (route/not-found "<h1>Page not found</h1>"))

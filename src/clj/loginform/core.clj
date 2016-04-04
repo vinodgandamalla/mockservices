@@ -20,8 +20,9 @@
 ;; case it returns a content of static index.html.
 
 (def in-db (atom {:users [{:user "user1" :password "techno" :email-id "user1@gmail.com"
-                           :services ["SuperAgent"]}
-                          {:user "user2" :password "identity" :email-id "user2@gmail.com"}
+                           :services ["SalesAgent"]}
+                          {:user "user2" :password "identity" :email-id "user2@gmail.com"
+                           :services ["SuperAdmin"]}
                           {:user "user3" :password "ti" :email-id "user3@gmail.com"}
                           {:user "user4" :password "tid" :email-id "user4@gmail.com"}]}))
 
